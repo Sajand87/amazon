@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Test-Suite" >
+   <test name="Amazon" >
+      <classes>
+      
+      <class name="com.amazon.testscripts.TC001"></class>
+      <class name="com.amazon.testscripts.TC002"></class>
+      
+      </classes>
+   </test>
+ </suite>
+

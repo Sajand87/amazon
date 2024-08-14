@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="Configuration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Appenders">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SystemPropertyArbiter" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence minOccurs="0">
+										<xs:element name="Console" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="PatternLayout">
+														<xs:complexType>
+															<xs:attribute name="pattern" use="required" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+												<xs:attribute name="name" use="required" />
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="List" minOccurs="0">
+											<xs:complexType>
+												<xs:simpleContent>
+													<xs:extension base="xs:string">
+														<xs:attribute name="name" use="required" />
+													</xs:extension>
+												</xs:simpleContent>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="propertyName" use="required" />
+									<xs:attribute name="propertyValue" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Loggers">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Logger">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AppenderRef">
+											<xs:complexType>
+												<xs:attribute name="ref" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="name" use="required" />
+									<xs:attribute name="level" use="required" />
+									<xs:attribute name="additivity" type="xs:boolean" use="required" />
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="Root">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="AppenderRef">
+											<xs:complexType>
+												<xs:attribute name="ref" use="required" />
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="level" use="required" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" use="required" />
+			<xs:attribute name="status" use="required" />
+			<xs:attribute name="monitorInterval" type="xs:integer" use="required" />
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
